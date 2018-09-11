@@ -5,11 +5,11 @@ const SolarSystem = function(planets) {
 };
 
 SolarSystem.prototype.bindEvents = function () {
-  // PubSub.publish('SolarSystem:selected', LOLWAT);
 
   PubSub.subscribe('SelectView:input', (evt) => {
-    const selectedIndex = evt.detail;
-    this.publishResult(selectedIndex);
+    const selectedPlanetName = evt.detail;
+    const output = this.planets.filter(p => p.name === selectedPlanetName);
+    this.publishResult(output[0]);
   });
 };
 
