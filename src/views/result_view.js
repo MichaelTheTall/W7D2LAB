@@ -13,10 +13,24 @@ ResultView.prototype.bindEvents = function(){
 };
 
 ResultView.prototype.render = function(planet){
-  // const infoParagraph = document.createElement('p');
-  // infoParagraph.textContent = `The ${animal.species}, of class '${animal.class}', has a maximum speed of ${animal.maxSpeed} km/h.`;
-  // this.container.innerHTML = '';
-  // this.container.appendChild(infoParagraph);
+  const targetContainer = document.querySelector('.planet-details');
+  const planetName = document.createElement('h2');
+  targetContainer.innerHTML = '';
+
+  planetName.textContent = `${planet.name}`;
+  targetContainer.appendChild(planetName);
+
+  // targetContainer.textContent = ;
+  // <h2 class="planet-name"></h2>
+  // <ol>
+  //   <li class="planet-orbit"></li>
+  //   <li class="planet-day"></li>
+  //   <li class="planet-area"></li>
+  //   <li class="planet-vol"></li>
+  //   <li class="planet-grav"></li>
+  //   <li class="planet-moons"></li>
+  // </ol>
+  // <div class="planet-img"></div>
 };
 
 module.exports = ResultView;
