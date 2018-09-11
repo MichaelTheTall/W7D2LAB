@@ -7,6 +7,7 @@ const ResultView = function(container){
 ResultView.prototype.bindEvents = function(){
   PubSub.subscribe('SolarSystem:selected', (evt) => {
     const planet = evt.detail;
+    console.log(planet);
     this.render(planet);
   });
 };

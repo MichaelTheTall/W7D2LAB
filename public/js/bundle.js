@@ -111,7 +111,7 @@ eval("const PubSub = {\n  publish: function (channel, payload) {\n    const even
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const PubSub = __webpack_require__(/*! ../helpers/pub_sub.js */ \"./src/helpers/pub_sub.js\");\n\nconst SolarSystem = function(planets) {\n  this.planets = planets;\n};\n\nSolarSystem.prototype.bindEvents = function () {\n\n  PubSub.subscribe('SelectView:input', (evt) => {\n    const selectedPlanetName = evt.detail;\n    const output = this.planets.filter(p => p.name === selectedPlanetName);\n    this.publishResult(output[0]);\n  });\n};\n\nSolarSystem.prototype.publishResult = function(planetIndex){\n  const selectedPlanet = this.planets[planetIndex];\n  PubSub.publish('SolarSystem:selected', selectedPlanet)\n};\n\nmodule.exports = SolarSystem;\n\n\n//# sourceURL=webpack:///./src/models/solar_system.js?");
+eval("const PubSub = __webpack_require__(/*! ../helpers/pub_sub.js */ \"./src/helpers/pub_sub.js\");\n\nconst SolarSystem = function(planets) {\n  this.planets = planets;\n};\n\nSolarSystem.prototype.bindEvents = function () {\n\n  PubSub.subscribe('SelectView:input', (evt) => {\n    const selectedPlanetName = evt.detail;\n    const output = this.planets.filter(p => p.name === selectedPlanetName);\n    this.publishResult(output[0]);\n  });\n};\n\nSolarSystem.prototype.publishResult = function(planetData){\n  PubSub.publish('SolarSystem:selected', planetData)\n};\n\nmodule.exports = SolarSystem;\n\n\n//# sourceURL=webpack:///./src/models/solar_system.js?");
 
 /***/ }),
 
@@ -122,7 +122,7 @@ eval("const PubSub = __webpack_require__(/*! ../helpers/pub_sub.js */ \"./src/he
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const PubSub = __webpack_require__(/*! ../helpers/pub_sub.js */ \"./src/helpers/pub_sub.js\");\n\nconst ResultView = function(container){\n  this.container = container;\n};\n\nResultView.prototype.bindEvents = function(){\n  PubSub.subscribe('SolarSystem:selected', (evt) => {\n    const planet = evt.detail;\n    this.render(planet);\n  });\n};\n\nResultView.prototype.render = function(planet){\n  // const infoParagraph = document.createElement('p');\n  // infoParagraph.textContent = `The ${animal.species}, of class '${animal.class}', has a maximum speed of ${animal.maxSpeed} km/h.`;\n  // this.container.innerHTML = '';\n  // this.container.appendChild(infoParagraph);\n};\n\nmodule.exports = ResultView;\n\n\n//# sourceURL=webpack:///./src/views/result_view.js?");
+eval("const PubSub = __webpack_require__(/*! ../helpers/pub_sub.js */ \"./src/helpers/pub_sub.js\");\n\nconst ResultView = function(container){\n  this.container = container;\n};\n\nResultView.prototype.bindEvents = function(){\n  PubSub.subscribe('SolarSystem:selected', (evt) => {\n    const planet = evt.detail;\n    console.log(planet);\n    this.render(planet);\n  });\n};\n\nResultView.prototype.render = function(planet){\n  // const infoParagraph = document.createElement('p');\n  // infoParagraph.textContent = `The ${animal.species}, of class '${animal.class}', has a maximum speed of ${animal.maxSpeed} km/h.`;\n  // this.container.innerHTML = '';\n  // this.container.appendChild(infoParagraph);\n};\n\nmodule.exports = ResultView;\n\n\n//# sourceURL=webpack:///./src/views/result_view.js?");
 
 /***/ }),
 

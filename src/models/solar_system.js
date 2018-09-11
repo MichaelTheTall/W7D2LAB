@@ -13,9 +13,8 @@ SolarSystem.prototype.bindEvents = function () {
   });
 };
 
-SolarSystem.prototype.publishResult = function(planetIndex){
-  const selectedPlanet = this.planets[planetIndex];
-  PubSub.publish('SolarSystem:selected', selectedPlanet)
+SolarSystem.prototype.publishResult = function(planetData){
+  PubSub.publish('SolarSystem:selected', planetData)
 };
 
 module.exports = SolarSystem;
