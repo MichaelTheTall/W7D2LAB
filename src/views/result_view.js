@@ -12,8 +12,7 @@ ResultView.prototype.bindEvents = function(){
 };
 
 ResultView.prototype.render = function(planet){
-  // const targetContainer = document.querySelector('.planet-details');
-  // targetContainer.innerHTML = '';
+
   const infoContainer = document.querySelector('.planetinfobox');
   infoContainer.innerHTML = '';
 
@@ -31,6 +30,7 @@ ResultView.prototype.render = function(planet){
 
   const planetImage = document.createElement('img');
   planetImage.src = `./${planet.image}`;
+  planetImage.alt = `A picture of ${planet.name}`
   imgContainer.appendChild(planetImage);
 
 
