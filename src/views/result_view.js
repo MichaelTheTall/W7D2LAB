@@ -14,23 +14,22 @@ ResultView.prototype.bindEvents = function(){
 
 ResultView.prototype.render = function(planet){
   const targetContainer = document.querySelector('.planet-details');
-  const planetName = document.createElement('h2');
   targetContainer.innerHTML = '';
 
+  const planetName = document.createElement('h2');
   planetName.textContent = `${planet.name}`;
   targetContainer.appendChild(planetName);
 
-  // targetContainer.textContent = ;
-  // <h2 class="planet-name"></h2>
-  // <ol>
-  //   <li class="planet-orbit"></li>
-  //   <li class="planet-day"></li>
-  //   <li class="planet-area"></li>
-  //   <li class="planet-vol"></li>
-  //   <li class="planet-grav"></li>
-  //   <li class="planet-moons"></li>
-  // </ol>
-  // <div class="planet-img"></div>
+  const planetInfo = document.createElement('p');
+  planetInfo.setAttribute('style', 'white-space: pre;');
+  planetInfo.textContent = `Day: ${planet.day} Earth days\r\nOrbit: ${planet.orbit} Earth days\r\nSurface Area: ${planet.surfaceArea} Earths\r\nVolume: ${planet.volume} Earths\r\nGravity: ${planet.gravity}g\r\nMoons: ${planet.moons}`;
+  targetContainer.appendChild(planetInfo);
+
+  const planetImage = document.createElement('img');
+  planetImage.src = `./${planet.image}`;
+  targetContainer.appendChild(planetImage);
+
+
 };
 
 module.exports = ResultView;
