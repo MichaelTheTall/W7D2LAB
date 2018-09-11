@@ -7,27 +7,31 @@ const ResultView = function(container){
 ResultView.prototype.bindEvents = function(){
   PubSub.subscribe('SolarSystem:selected', (evt) => {
     const planet = evt.detail;
-    console.log(planet);
     this.render(planet);
   });
 };
 
 ResultView.prototype.render = function(planet){
-  const targetContainer = document.querySelector('.planet-details');
-  targetContainer.innerHTML = '';
+  // const targetContainer = document.querySelector('.planet-details');
+  // targetContainer.innerHTML = '';
+  const infoContainer = document.querySelector('.planetinfobox');
+  infoContainer.innerHTML = '';
+
+  const imgContainer = document.querySelector('.planetimgbox');
+  imgContainer.innerHTML = '';
 
   const planetName = document.createElement('h2');
   planetName.textContent = `${planet.name}`;
-  targetContainer.appendChild(planetName);
+  infoContainer.appendChild(planetName);
 
   const planetInfo = document.createElement('p');
   planetInfo.setAttribute('style', 'white-space: pre;');
   planetInfo.textContent = `Day: ${planet.day} Earth days\r\nOrbit: ${planet.orbit} Earth days\r\nSurface Area: ${planet.surfaceArea} Earths\r\nVolume: ${planet.volume} Earths\r\nGravity: ${planet.gravity}g\r\nMoons: ${planet.moons}`;
-  targetContainer.appendChild(planetInfo);
+  infoContainer.appendChild(planetInfo);
 
   const planetImage = document.createElement('img');
   planetImage.src = `./${planet.image}`;
-  targetContainer.appendChild(planetImage);
+  imgContainer.appendChild(planetImage);
 
 
 };
